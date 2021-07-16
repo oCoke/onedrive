@@ -306,16 +306,10 @@ async function renderMarkdown(path, url) {
         try {
             markedText = marked(text, {
                 gfm: true,
-                highlight: (code, lang, callback) => {
-                    return hljs.highlight(lang, code).value;
-                },
             });
         } catch (e) {
             markedText = marked(text, {
                 gfm: true,
-                highlight: (code, lang, callback) => {
-                    return hljs.highlight("bash", code).value;
-                },
             });
         }
         if (
@@ -638,17 +632,12 @@ function addFileListLineListener(elem, path, url, size) {
                         pre.append(code);
                         pre.style.background = "rgb(245,245,245)";
                         pre.style["overflow-x"] = "scroll";
-                        pre.classList.add(suffix);
+                        pre.classList.add("language-" + suffix);
                         // content.style.textAlign = "initial";
                         content.innerHTML = "";
                         content.append(pre);
                         code.textContent = data;
-                        if (
-                            size.indexOf(" B") >= 0 ||
-                            (size.indexOf(" KB") && size.split(" ")[0] < 100)
-                        ) {
-                            hljs.highlightBlock(pre);
-                        }
+                        Prism.highlightAll();
                     });
                     break;
                 case "markdown":
