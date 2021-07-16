@@ -566,12 +566,11 @@ function addFileListLineListener(elem, path, url, size) {
                 },
 
                 createDplayer: (video, type, elem) => {
-                    const host = "//s0.pstatp.com/cdn/expire-1-M";
+                    const host = "https://cdn.jsdelivr.net/npm";
                     const resources = [
-                        "/dplayer/1.25.0/DPlayer.min.css",
-                        "/dplayer/1.25.0/DPlayer.min.js",
-                        "/hls.js/0.12.4/hls.light.min.js",
-                        "/flv.js/1.5.0/flv.min.js",
+                        "/dplayer@1.26.0/dist/DPlayer.min.js",
+                        "/hls.js@1.0.7/dist/hls.light.min.js",
+                        "/flv.js@1.5.0/dist/flv.min.js",
                     ];
                     let unloadedResourceCount = resources.length;
                     resources.forEach((resource) => {
